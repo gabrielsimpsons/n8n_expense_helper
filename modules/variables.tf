@@ -15,9 +15,3 @@ variable "route53_hosted_zone_id" {
   description = "The ID of the Route 53 hosted zone for the domain."
   type        = string
 }
-
-variable "efs_backup_policy_arn" {
-  description = "Optional: The ARN of the EFS backup policy."
-  type        = string
-  default     = ""
-}
