@@ -16,6 +16,43 @@ variable "route53_hosted_zone_id" {
   type        = string
 }
 
+variable "alb_dns_name" {
+  description = "The DNS name of the Application Load Balancer"
+  type        = string
+}
+
+variable "alb_dns_arn" {
+  description = "The DNS ARM of the Application Load Balancer"
+  type        = string
+}
+
+
+variable "security_group_id" {
+  description = "Security "
+  type        = string
+}
+
+variable "subnet_id" {
+  description = "subnet id"
+  type        = string
+}
+
+
+variable "vpc_id" {
+  description = "subnet id"
+  type        = string
+}
+
+variable "vpc_cidr" {
+  description = "vpc cidr"
+  type        = string
+}
+
+variable "subnet_public_ids" {
+    description = "A map of public subnet IDs where resources will be created"
+    type        = map(string)
+}
+
 variable "n8n_host" {
   description = "The hostname for the n8n instance."
   type        = string
