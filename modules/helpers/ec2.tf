@@ -17,17 +17,8 @@ resource "aws_key_pair" "helpers_key" {
 }
 
 # user_data is not executed by default, so we need to connect via SSH and execute 
-# docker run --rm -p 5678:5678 \
-#    --name helpers \
-#    -v helpers_data:/home/node/.n8n \
-#    -e WEBHOOK_URL=https://helpers.gsierrar.dev/webhook \
-#    -e N8N_BASIC_AUTH_ACTIVE=true \
-#    -e N8N_BASIC_AUTH_USER=admin \
-#    -e N8N_BASIC_AUTH_PASSWORD=your_secure_password \
-#    -e N8N_HOST=helpers.gsierrar.dev \
-#    -e N8N_PORT=5678 \
-#    -e N8N_PROTOCOL=http \
-#    n8nio/n8n
+# sudo bash /var/lib/cloud/instance/scripts/part-001
+
 resource "aws_instance" "helpers_instance" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.medium" # Increased resources for better performance
