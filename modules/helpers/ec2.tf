@@ -26,9 +26,10 @@ resource "aws_instance" "helpers_instance" {
   vpc_security_group_ids = [var.security_group_id, aws_security_group.helpers_instance_sg.id]
   key_name      = "helpers-key" # replace with your key
   user_data     = templatefile("${path.module}/helpers_user_data.tpl", {
-    webhook_url       = var.n8n_webhook_url,
     helpers_root_password = var.helpers_root_password,
     n8n_host          = var.n8n_host,
+    trusted_proxies   = var.vpc_cidr,
+    webhook_url      = var.n8n_webhook_url,
   })
   tags = {
     Name = "helpers-instance"

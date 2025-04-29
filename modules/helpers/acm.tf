@@ -1,7 +1,17 @@
 # Create a Certificate Manager certificate for the n8n subdomain
+# resource "aws_acm_certificate" "helpers_cert1" {
+#   domain_name               = "helpers.gsierrar.dev"
+#   subject_alternative_names = ["helpers.gsierrar.dev"] # Optional, but good to have.
+#   validation_method         = "DNS"
+
+#   tags = {
+#     Name = "helpers-certificate"
+#   }
+# }
+
 resource "aws_acm_certificate" "helpers_cert" {
-  domain_name               = "helpers.gsierrar.dev"
-  subject_alternative_names = ["helpers.gsierrar.dev"] # Optional, but good to have.
+  domain_name               = var.n8n_host
+  subject_alternative_names = [var.n8n_host] # Optional, but good to have.
   validation_method         = "DNS"
 
   tags = {

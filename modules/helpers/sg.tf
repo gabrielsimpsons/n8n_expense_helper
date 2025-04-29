@@ -28,6 +28,7 @@ resource "aws_security_group" "helpers_instance_sg" {
     to_port     = 5678
     protocol    = "tcp"
     security_groups = [var.security_group_id] # Only allow traffic from the ALB
+    cidr_blocks = [var.vpc_cidr] 
   }
 
   # Add other necessary ingress rules for your instance (e.g., SSH)
